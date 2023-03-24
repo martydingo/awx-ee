@@ -85,6 +85,11 @@ RUN for dir in \
       /etc/group ; \
     do touch $file ; chmod g+rw $file ; chgrp root $file ; done
 
+# START CUSTOMIZE: Add any additional packages you want installed here
+
+RUN yum install -y yum-utils && yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && yum -y install terraform
+
+
 WORKDIR /runner
 # END (remove this when we move back to using ansible-builder)
 
